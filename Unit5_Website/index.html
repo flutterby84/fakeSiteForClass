@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Home Page</title>
+  <!-- Connects Tailwind via CDN to allow use of utility classes -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Image that is responsive -->
+  <img src="images/pexels-magda-ehlers-pexels-1279813.jpg"
+    alt="Colorful banner with vertical stripes"
+    class="w-full max-w-7xl mx-auto rounded-lg shadow-lg object-cover h-32 sm:h-40 md:h-20">
+    <!-- How to make responsive to size:
+    Mobile: h-32 or h-20
+    Small screens (sm): h-40 or h-24
+    Medium screens (md): h-20
+    -->
+
+</head>
+<body>
+
+<!-- 
+  flex-col md:flex-row → stacks sections on mobile, row on desktop
+  justify-between → space items out
+  items-center → center vertically
+-->
+<header class="bg-yellow-200 px-4 py-3 flex flex-col md:flex-row justify-between items-center">
+  <div class="flex justify-between w-full md:w-auto">
+    <img src="images/logo.png" alt="Site Logo" class="w-10" />
+    <button class="md:hidden text-black text-2xl" id="menu-button">☰</button>
+  </div>
+
+  <!-- 
+    Responsive nav:
+    hidden md:flex → hide on mobile, show on desktop
+    flex-col md:flex-row → stack on mobile, row on desktop
+    gap-4 mt-2 md:mt-0 → spacing between links, margin top on mobile
+  -->
+  <nav id="menu" class="hidden md:flex flex-col md:flex-row gap-4 mt-2 md:mt-0">
+    <a href="index.html" class="font-semibold text-black">Home Page</a>
+    <a href="contact.html" class="text-black">Contact</a>
+    <a href="products.html" class="text-black">Products</a>
+  </nav>
+
+  <div class="flex gap-2 mt-2 md:mt-0">
+    <button class="border px-3 py-1 rounded">Sign in</button>
+    <button class="bg-black text-white px-3 py-1 rounded">Register</button>
+  </div>
+</header>
+
+<!-- JavaScript to toggle mobile menu -->
+<script>
+  const menuButton = document.getElementById('menu-button');
+  const menu = document.getElementById('menu');
+  menuButton.addEventListener('click', () => {
+    menu.classList.toggle('hidden');
+  });
+</script>
+<!-- 
+  What was added:
+  - Hamburger ☰ button that only shows on mobile (md:hidden)
+  - JS script to toggle the nav open/closed on mobile
+-->
+
+<main class="bg-teal-200 flex flex-col items-center p-6 text-center">
+  <h1 class="text-3xl md:text-5xl mb-4">Title</h1>
+  <p class="text-lg md:text-xl mb-6">Subtitle</p>
+  <form class="flex flex-col sm:flex-row gap-2 w-full max-w-md">
+    <input type="text" placeholder="Search" class="border p-2 rounded w-full" />
+    <button type="submit" class="border px-4 py-2 rounded">Search</button>
+  </form>
+</main>
+
+<footer class="bg-pink-300 flex flex-col md:flex-row justify-between items-center p-4 mt-6 text-center md:text-left">
+  <img src="images/logo.png" alt="Site Logo" class="w-10 mb-2 md:mb-0" />
+  <nav class="flex flex-col md:flex-row gap-4 mb-2 md:mb-0">
+    <a href="index.html">Home Page</a>
+    <a href="contact.html">Contact</a>
+    <a href="product.html">Products</a>
+  </nav>
+  <div class="flex gap-2 mb-2 md:mb-0">
+    <span>X</span>
+    <span>Instagram</span>
+    <span>YouTube</span>
+    <span>LinkedIn</span>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- 
+Tailwind utility classes used on this page:
+
+flex → lays out items in a row or column depending on direction
+
+flex-col → stacks items vertically on mobile
+
+md:flex-row → switches to horizontal layout on medium screens (≥768px)
+
+justify-between → spaces items to the far left and right
+
+items-center → vertically centers items inside the flex container
+
+hidden → hides elements (used to hide nav on mobile)
+
+md:hidden → hides elements on medium screens and up (used to hide hamburger button on desktop)
+
+gap-4 / gap-2 → adds space between items
+
+mt-2 md:mt-0 → adds top margin on mobile, removes it on desktop
+
+p-4 / p-6 → adds padding inside header, main, and footer sections
+
+w-10 → sets logo width
+
+w-full → makes inputs and images take up full available width
+
+max-w-md → limits max width on larger screens (used for form container)
+
+text-3xl → makes the “Contact Us” headline large
+
+text-2xl → sets hamburger menu icon size
+
+mb-2 / mb-4 / mb-6 → adds bottom margin between stacked elements
+
+border → adds a simple border around inputs and buttons
+
+rounded → rounds the corners of elements like inputs, buttons, and images
+
+text-xs → sets very small text size (used in footer)
+
+underline → underlines text links (used in footer links)
+
+object-cover → makes images fill their container without stretching or squishing
+
+h-32 md:h-48 → sets image height (shorter on mobile, taller on desktop)
+
+shadow-md → adds a subtle shadow effect to images or containers
+-->
