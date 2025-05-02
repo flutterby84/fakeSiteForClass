@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Products Page</title>
+  <!-- Connects Tailwind via CDN to allow usage of utility classes -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!--Custom font that uses tailwinds utility classes to style certian aspects-->
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Open+Sans&display=swap" rel="stylesheet">
+  <style>
+    .font-dancing {
+      font-family: 'Dancing Script', cursive;
+    }
+    .font-opensans {
+      font-family: 'Open Sans', sans-serif;
+    }
+  </style>
+</head>
+<body class="font-sans">
+
+  <header class="bg-yellow-200 px-4 py-3 flex flex-col md:flex-row justify-between items-center">
+    <div class="flex justify-between w-full md:w-auto">
+      <img src="images/logo.png" alt="Site Logo" class="w-10" />
+      <button class="md:hidden text-black text-2xl" id="menu-button">☰</button>
+    </div>
+
+    <nav id="menu" class="hidden md:flex flex-col md:flex-row gap-4 mt-2 md:mt-0">
+      <a href="index.html">Home Page</a>
+      <a href="contact.html">Contact</a>
+      <a href="product.html">Products</a>
+    </nav>
+
+    <div class="flex gap-2 mt-2 md:mt-0">
+      <button class="border px-3 py-1 rounded">Sign in</button>
+      <button class="border px-3 py-1 rounded">Register</button>
+    </div>
+  </header>
+
+  <script>
+    const menuButton = document.getElementById('menu-button');
+    const menu = document.getElementById('menu');
+    menuButton.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+    });
+  </script>
+  <!-- 
+    What was added:
+    - Hamburger ☰ button that shows on mobile (md:hidden)
+    - JS script to toggle the nav open/closed on mobile
+    - Tailwind responsive classes to stack or row the nav
+  -->
+
+  <main class="bg-teal-200 p-6">
+    <h1 class="text-3xl mb-6 text-center font-dancing">Our Products</h1>
+<p class="text-lg mb-4 text-center font-opensans">Discover handmade pottery.</p>
+<!-- 
+font-dancing → applies the Dancing Script cursive font
+font-opensans → applies the Open Sans sans-serif font to body text
+-->
+
+    <!-- NEW: Responsive product images inside a card box-->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+      <div class="border rounded-lg overflow-hidden shadow-lg">
+        <img src="images/istockphoto-695916244-1024x1024.jpg"
+          alt="Assorted handmade pottery items"
+          class="w-full object-cover h-32 sm:h-40 md:h-48 object-[50%_80%]">
+      </div>
+      <div class="border rounded-lg overflow-hidden shadow-lg">
+        <img src="images/pexels-belle-co-99483-1000437.jpg"
+          alt="Pottery wheel with clay shaping"
+          class="w-full object-cover h-40 sm:h-40 md:h-48 object-[70%_30%]">
+      </div>
+    </div>
+    <!--   
+    Images inside cards →
+      wrapped each image in a <div> with border, rounded-lg, shadow-lg, overflow-hidden → this gave each image a box with a border, rounded corners, and shadow, so it looks clean and organized.
+    Grid on the div →
+      the outer div has grid grid-cols-1 md:grid-cols-2 → this shows one image per row on mobile and two side by side on desktop.
+    Used object-cover →
+      makes images fill the box without stretching or squishing.
+    Set object-[70%_30%] →
+      moves the image focus to show more of the heart and less cropping.
+    Made height responsive (h-32 sm:h-40 md:h-48) →
+      short on mobile, a little taller on small screens, tallest on desktop (balanced on all devices), therefore responsive!
+    -->
+
+    <form class="flex justify-center gap-2 mb-6">
+      <input type="text" placeholder="Search products" class="border p-2 rounded w-64" />
+      <button type="submit" class="border px-4 py-2 rounded">🔍</button>
+    </form>
+
+    <section class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-6">
+      <div class="border p-4 rounded">
+        <h2 class="text-xl mb-2">⭐ Product 1</h2>
+        <p>Description of product 1.</p>
+      </div>
+      <div class="border p-4 rounded">
+        <h2 class="text-xl mb-2">⭐ Product 2</h2>
+        <p>Description of product 2.</p>
+      </div>
+      <div class="border p-4 rounded">
+        <h2 class="text-xl mb-2">⭐ Product 3</h2>
+        <p>Description of product 3.</p>
+      </div>
+      <div class="border p-4 rounded">
+        <h2 class="text-xl mb-2">⭐ Product 4</h2>
+        <p>Description of product 4.</p>
+      </div>
+      <div class="border p-4 rounded">
+        <h2 class="text-xl mb-2">⭐ Product 5</h2>
+        <p>Description of product 5.</p>
+      </div>
+      <div class="border p-4 rounded">
+        <h2 class="text-xl mb-2">⭐ Product 6</h2>
+        <p>Description of product 6.</p>
+      </div>
+    </section>
+
+    <!-- Responsive product table -->
+    <section class="overflow-x-auto">
+      <table class="min-w-full bg-white border border-gray-300 rounded-lg">
+        <thead>
+          <tr class="bg-yellow-100">
+            <th class="text-left px-4 py-2 border">Product</th>
+            <th class="text-left px-4 py-2 border">Price</th>
+            <th class="text-left px-4 py-2 border">Stock</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="px-4 py-2 border">Product 1</td>
+            <td class="px-4 py-2 border">$10</td>
+            <td class="px-4 py-2 border">In Stock</td>
+          </tr>
+          <tr class="bg-gray-100">
+            <td class="px-4 py-2 border">Product 2</td>
+            <td class="px-4 py-2 border">$20</td>
+            <td class="px-4 py-2 border">Limited</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-2 border">Product 3</td>
+            <td class="px-4 py-2 border">$30</td>
+            <td class="px-4 py-2 border">Out of Stock</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+    <!--   
+    notes:
+    overflow-x-auto →
+      makes table scrollable on small screens to prevent cutoff.
+    min-w-full →
+      makes table stretch full width of its container.
+    bg-white, bg-yellow-100, bg-gray-100 →
+      background colors for table and row stripes.
+    border, border-gray-300 →
+      adds borders and color to table and cells.
+    rounded-lg →
+      rounds corners of the table.
+    px-4 py-2 →
+      padding inside table cells.
+    text-left →
+      aligns text to the left inside cells.
+    -->
+  </main>
+
+  <footer class="bg-pink-300 flex flex-col md:flex-row justify-between items-center p-4 mt-6">
+    <img src="images/logo.png" alt="Site Logo" class="w-10 mb-2 md:mb-0" />
+    <nav class="flex flex-col md:flex-row gap-4 mb-2 md:mb-0">
+      <a href="index.html">Home Page</a>
+      <a href="contact.html">Contact</a>
+      <a href="product.html">Products</a>
+    </nav>
+    <div class="flex gap-2 mb-2 md:mb-0">
+      <span>X</span>
+      <span>Instagram</span>
+      <span>YouTube</span>
+      <span>LinkedIn</span>
+    </div>
+    <p class="text-xs">&copy; 2025 Your Website. All Rights Reserved.</p>
+    <p class="text-xs">
+      <a href="#" class="underline">Privacy Policy</a> · 
+      <a href="#" class="underline">Terms Of Service</a>
+    </p>
+  </footer>
+
+</body>
+</html>
+
+<!-- 
+Tailwind utility classes used on this page:
+
+flex, flex-col, md:flex-row, justify-between, items-center, hidden, md:hidden,
+gap-4, gap-2, mt-2, md:mt-0, p-4, p-6, w-10, w-full, max-w-7xl,
+text-3xl, text-xl, mb-2, mb-4, mb-6, border, rounded, rounded-lg,
+text-xs, underline, grid, grid-cols-1, sm:grid-cols-2, md:grid-cols-3,
+object-cover, object-[50%_80%], object-[70%_30%], h-32, sm:h-40, md:h-48, shadow-lg
+
+NEW for product table  to make it responsive:
+overflow-x-auto → makes table scrollable on small screens.
+min-w-full → table takes full width.
+bg-white, bg-yellow-100, bg-gray-100 → background colors.
+border, border-gray-300 → adds borders to table/cells.
+rounded-lg → rounded table corners.
+px-4, py-2 → padding inside table cells.
+text-left → aligns cell text left.
+
+Font:
+1st import in head then use it specifically on the font.
+font-dancing → custom class to apply the Dancing Script cursive font
+font-opensans → custom class to apply the Open Sans sans-serif font
+
+-->
+

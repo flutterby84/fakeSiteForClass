@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Page</title>
+  <!-- Connects Tailwind via CDN to allow usage of utility classes -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Responsive Image -->
+  <img src="images/Contact.png" alt="Contact page banner" 
+  class="w-full mx-auto rounded-lg shadow-lg object-cover h-32 sm:h-40 md:h-20">
+</head>
+
+<body>
+  
+  <!-- 
+    flex-col md:flex-row → stacks header on mobile, row on desktop
+    justify-between → space items apart
+    items-center → vertically center items
+  -->
+  <header class="bg-yellow-200 px-4 py-3 flex flex-col md:flex-row justify-between items-center">
+    <div class="flex justify-between w-full md:w-auto">
+      <img src="images/logo.png" alt="Site logo" class="w-10" />
+      <button class="md:hidden text-black text-2xl" id="menu-button">☰</button>
+    </div>
+
+    <!-- 
+      Responsive nav:
+      hidden md:flex → hides on mobile, shows on desktop
+      flex-col md:flex-row → stack on mobile, row on desktop
+      gap-4 mt-2 md:mt-0 → gap between links and margin on mobile
+    -->
+    <nav id="menu" class="hidden md:flex flex-col md:flex-row gap-4 mt-2 md:mt-0">
+      <a href="index.html">Home Page</a>
+      <a href="contact.html">Contact</a>
+      <a href="product.html">Products</a>
+    </nav>
+
+    <div class="flex gap-2 mt-2 md:mt-0">
+      <button class="border px-3 py-1 rounded">Sign in</button>
+      <button class="border px-3 py-1 rounded">Register</button>
+    </div>
+  </header>
+
+  <!-- JavaScript to toggle mobile menu -->
+  <script>
+    const menuButton = document.getElementById('menu-button');
+    const menu = document.getElementById('menu');
+    menuButton.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+    });
+  </script>
+  <!-- 
+    What was added:
+    - ☰ hamburger button → shows on mobile (md:hidden)
+    - small JS toggle → opens/closes the nav on click
+    - Tailwind classes → stack nav on mobile, row on desktop
+  -->
+
+  <main class="bg-teal-200 flex flex-col items-center p-6">
+    <h1 class="text-3xl mb-6">Contact Us</h1>
+    <!-- 
+      -grid grid-cols-1 md:grid-cols-2 →
+        Stacks inputs in one column on mobile; two columns on desktop.  
+      -gap-4 →
+        Adds nice space between fields so it’s not all cramped.
+      -w-full max-w-3xl →
+        Makes the form stretch across mobile but caps it at 3xl width on desktop.
+      -md:col-span-2 on Email, Message, and Button →
+        Tells these elements to span across both columns on desktop (so the textarea and button stay wide).-->
+    <form class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-3xl">
+      <input type="text" placeholder="First Name" class="border p-2 rounded w-full" />
+      <input type="text" placeholder="Last Name" class="border p-2 rounded w-full" />
+      <input type="email" placeholder="Email" class="border p-2 rounded w-full md:col-span-2" />
+      <textarea placeholder="Message" class="border p-2 rounded w-full md:col-span-2"></textarea>
+      <button type="submit" class="bg-black text-white px-4 py-2 rounded md:col-span-2">Submit</button>
+    </form>
+  </main>
+
+  <footer class="bg-pink-300 flex flex-col md:flex-row justify-between items-center p-4 mt-6">
+    <img src="images/logo.png" alt="Site Logo" class="w-10 mb-2 md:mb-0" />
+    <nav class="flex flex-col md:flex-row gap-4 mb-2 md:mb-0">
+      <a href="index.html">Home Page</a>
+      <a href="contact.html">Contact</a>
+      <a href="product.html">Products</a>
+    </nav>
+    <div class="flex gap-2 mb-2 md:mb-0">
+      <span>X</span>
+      <span>Instagram</span>
+      <span>YouTube</span>
+      <span>LinkedIn</span>
+    </div>
+    <p class="text-xs">&copy; 2025 Your Website. All Rights Reserved.</p>
+    <p class="text-xs">
+      <a href="#" class="underline">Privacy Policy</a> · 
+      <a href="#" class="underline">Terms Of Service</a>
+    </p>
+  </footer>
+
+</body>
+</html>
+
+<!-- 
+Tailwind utility classes used on this page:
+
+flex → lays out items in a row or column depending on direction
+
+flex-col → stacks items vertically on mobile
+
+md:flex-row → switches to horizontal layout on medium screens (≥768px)
+
+justify-between → spaces items to the far left and right
+
+items-center → vertically centers items inside the flex container
+
+hidden → hides elements (used to hide nav on mobile)
+
+md:hidden → hides elements on medium screens and up (used to hide hamburger button on desktop)
+
+gap-4 / gap-2 → adds space between items
+
+mt-2 md:mt-0 → adds top margin on mobile, removes it on desktop
+
+p-4 / p-6 → adds padding inside header, main, and footer sections
+
+w-10 → sets logo width
+
+w-full → makes inputs and images take up full available width
+
+max-w-md → limits max width on larger screens (used for form container)
+
+text-3xl → makes the “Contact Us” headline large
+
+text-2xl → sets hamburger menu icon size
+
+mb-2 / mb-4 / mb-6 → adds bottom margin between stacked elements
+
+border → adds a simple border around inputs and buttons
+
+rounded → rounds the corners of elements like inputs, buttons, and images
+
+text-xs → sets very small text size (used in footer)
+
+underline → underlines text links (used in footer links)
+
+object-cover → makes images fill their container without stretching or squishing
+
+h-32 md:h-48 → sets image height (shorter on mobile, taller on desktop)
+
+shadow-md → adds a subtle shadow effect to images or containers
+
+             updated with contact form responsive tailwinds utility classes
+              -grid grid-cols-1 md:grid-cols-2 →
+                Stacks inputs in one column on mobile; two columns on desktop.  
+              -gap-4 →
+                Adds nice space between fields so it’s not all cramped.
+              -w-full max-w-3xl →
+                Makes the form stretch across mobile but caps it at 3xl width on desktop.
+              -md:col-span-2 on Email, Message, and Button →
+                Tells these elements to span across both columns on desktop (so the textarea and button stay wide).-->
+
+
+-->
+
